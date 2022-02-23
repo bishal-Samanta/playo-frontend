@@ -152,6 +152,33 @@ document.querySelector("#save").addEventListener("click", ()=>{
      })
      .then((res)=>{
          console.log(res);
+         if("erros" in res){
+            console.log(res.erros[0].msg);
+            for(let i =0; i<res.erros.length; i++){
+                var value = res.erros[i].msg
+                alert(value);
+            }
+             
+         }
+         else{
+
+            localStorage.setItem("user_details", JSON.stringify(obj));
+            localStorage.setItem("givedetails", true);
+
+
+           let loginstat = localStorage.getItem("login");
+           if(loginstat === "true"){
+
+             let data = JSON.parse(localStorage.getItem("user_details"));
+             let {f , l , e} = data;
+             document.querySelector(".firstname").placeholder = f;
+             document.querySelector(".lastname").placeholder =  l;
+             document.querySelector(".email").placeholder =  e;
+        
+       }
+
+
+         }
          
      })
      .catch((e)=>{
@@ -164,21 +191,7 @@ document.querySelector("#save").addEventListener("click", ()=>{
      
      console.log(userObj)
 
-     localStorage.setItem("user_details", JSON.stringify(obj));
-     localStorage.setItem("givedetails", true);
-
-
-    let loginstat = localStorage.getItem("login");
-    if(loginstat === "true"){
-
-             let data = JSON.parse(localStorage.getItem("user_details"));
-             let {f , l , e} = data;
-             document.querySelector(".firstname").placeholder = f;
-             document.querySelector(".lastname").placeholder =  l;
-             document.querySelector(".email").placeholder =  e;
-        
-       }
-
+     
 
 
 
@@ -193,6 +206,7 @@ document.querySelector("#reset").addEventListener("click", ()=>{
     document.querySelector(".email").placeholder =  "Email*";
     window.localStorage.removeItem('user_details');
     localStorage.setItem("givedetails", false);
+    alert("Please update the details you want")
     
 })
 
