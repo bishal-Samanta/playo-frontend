@@ -1,0 +1,232 @@
+body{
+    /* display: flex;
+    justify-content: center;
+    background-color: #EEEFEF; */
+    margin: 0;
+    padding: 0;
+    
+}
+
+#header{
+    width: 100%; 
+    height: 66px; 
+}
+
+/* Navbar start */
+#navbar{
+    height: 66px;
+    background-color: #FEFFFE;
+    width: 100%;
+    
+}
+
+body{
+    margin: auto;
+}
+
+#logo{ 
+    width: 100px; 
+    height: 45px; 
+    margin-left: -60%;
+}
+
+#pplogo{
+    width: 35px; 
+    height: 35px;
+}
+
+#explorenavbar{
+    display: flex; 
+    padding-top: 10px; 
+    width: 100%;
+    height: 100%; 
+    box-shadow: rgba(0, 0, 0, 0.185) 0px 3px 5px;
+}
+
+#dropdownarrow{
+    width: 12px; 
+    height: 8px;
+    padding-top: 20px; 
+    margin-left: 1%;
+}
+
+#logodiv{
+    margin-left: 9.5%;
+    margin-top: 10px;
+}
+
+#nav2div{
+    margin-left: 67.5%; margin-top: 5px;
+    display: flex; margin-top: 10px;
+}
+
+.loginp{
+    margin-left: 10px; 
+    line-height: 10px;
+    font-size: 14px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color: #5c5c5c;
+}
+
+#nav2div:hover{
+    cursor: pointer;
+}
+
+/* popup styling */
+
+
+*{
+    box-sizing: border-box;
+}
+
+#modal_container{
+    border: 1px solid green;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+button{
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    padding: 10px 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background-color: green;
+}
+
+#close{
+    height: 27px;
+    position: absolute;
+    right: 20%;
+    top: 17.5%;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#modal_container.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#modal{
+    display: flex;
+    background-color: white;
+    margin-left: -1.5%;
+    margin-top: -7%;
+    border-radius: 5px;
+    width: 59.3%;
+    height: 290px;
+    max-width: 100%;
+}
+
+#login_left_div{
+    width: 40%;
+    background-color: #fdbd51;
+
+}
+
+#login_right_div{
+    width: 48.5%;
+    height: 80%;
+    margin-left: 5%;
+    margin-top: 3.7%;
+    text-align: center;
+    font-family: Lato, sans-serif;
+}
+
+#input{
+    color: #5c5c5c;
+    padding: 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(160, 160, 160);
+    border-bottom-width: 50%;
+    border-image: initial;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    outline: none;
+    padding: 4px;
+    padding-bottom: 8px !important;
+    vertical-align: baseline;
+    text-align: left;
+    width: 100%;
+}
+
+#input::-webkit-outer-spin-button,
+#input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#entermobile{
+    font-size: 16px;
+    line-height: 16px;
+    color: #808080;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+#user_phone_div{
+    margin-bottom: 12px;
+    display: flex;
+}
+
+#sendOTP{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(133, 199, 133);
+
+}
+
+#countryDrop{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #424242;
+    vertical-align: baseline;
+    margin-left: 10px;
+    width: 9%;
+}
+
+
+/* Navbar End */
+
+#rzp-button1{
+    width: 200px;
+    height: 50px;
+    background-color: #679F00;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+   
+}
+
+#rzp-button1:hover{
+    cursor: pointer;
+}
+
+#payDiv{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#footer{
+    width: 100%;
+    height: 281px;
+}

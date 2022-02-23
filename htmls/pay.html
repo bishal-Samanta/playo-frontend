@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/pay.css">
+    <title>Playo: Pay with razor pay</title>
+    
+</head>
+<body>
+    <div id="outermost_container">
+
+        <!-- navbar start -->
+        <div id="header">
+
+            <div id="explorenavbar">
+
+                <div id="logodiv" >
+                    <img id="logo" src="https://playo-website.imgix.net/company/logo1.png?auto=compress,format" alt="playo logo">
+                </div>
+        
+                <div id="nav2div"> 
+                    <img id="pplogo" src="https://playo-website.gumlet.net/playo_functional/Icons/user_blank.svg" alt="">
+                    <p id="myBtn" class="loginp">Login/Signup</p>
+                    <img id="dropdownarrow" src="https://playo-website.gumlet.net/playo_functional/Icons/arrow_light.svg" alt="arrow">
+                </div>
+        
+               
+        
+                <!--    popupwindow -->
+                <div id="modal_container">
+        
+                    <div id="modal">
+                        <img id="close" src="https://playo-website.gumlet.net/playo_functional/Icons/closeButton.svg" alt="">
+        
+                        <div id="login_left_div">
+                            <img width="100%" src="https://playo-website.gumlet.net/icons/login-graphics.png?auto=compress,format" alt="">
+                        </div>
+                        <div id="login_right_div">
+                            <p id="entermobile">Enter Your Mobile Number</p>
+        
+                            <div id="user_phone_div">
+                                <div>
+                                    <div id="countrySpan">
+                                        <span>
+                                            <div id="selectCallingCode">
+                                                <span style="font-size: 14px; color: #424242;" id="rem1">IND</span>
+                                                <span style="font-size: 14px; color: #424242;" id="rem2">+91</span>
+                                                <img id="countryDrop" src="https://s3.ap-south-1.amazonaws.com/playo-website/booking/selectCountry.svg" alt="dropdown">
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                                <span>
+                                    <input id="input" type="number" placeholder="Mobile Number *" value="">
+                                    <hr style="margin-top: -1px; margin-left: -65%; width: 220%;">
+                                </span>
+                                
+                            </div>
+        
+                            <button id="sendOTP" style="font-size: 1em;">SEND OTP</button>
+                            <button id="giveOTP"  style="font-size: 1em;" >Enter OTP</button>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+
+        </div>
+        <!-- navbar end -->
+
+        <div id="payDiv">
+            <button id="rzp-button1">Pay with Razor pay</button>
+        </div>
+
+        <div id="footer"></div>
+
+    </div>
+</body>
+</html>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script type="module" src="../scripts/pay.js">
+</script>
