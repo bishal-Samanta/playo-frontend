@@ -1,6 +1,7 @@
 
 
 
+
     
 //Login and pop up full functionalities start
 
@@ -631,7 +632,19 @@ function addtocart()
 
     let price = count*2200;
     localStorage.setItem("finalPrice", price);
-    window.location.href = "pay.html";
+    let loginstat = localStorage.getItem("login");
+    console.log(loginstat)
+    if(loginstat === "true"){
+        window.location.href = "pay.html";
+    }
+    else{
+        modal_container.classList.add("show")
+        //window.location.href = "pay.html";
+    }
+    
+
+
+    
    
 
 
