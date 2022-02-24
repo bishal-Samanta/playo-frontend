@@ -135,7 +135,7 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
 
 
     var options = {
-        "key": "rzp_test_VhRZKygRJUvXe9", // Enter the Key ID generated from the Dashboard
+        "key": "rzp_test_YRchQmUUNwRgXd", // Enter the Key ID generated from the Dashboard
         "amount": price, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Playo",

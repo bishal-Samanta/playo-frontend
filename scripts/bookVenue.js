@@ -644,9 +644,14 @@ addId()
 
 //console.log(cartobj)
 async function addId(){
+    if(user){
     cartobj.club_id = await data._id;
     cartobj.user_id = await user.user._id;
     console.log(cartobj)
+    }
+    else{
+        modal_container.classList.add("show")
+    }
 }
 
 
@@ -656,7 +661,7 @@ async function addId(){
 
 // these function for add elements to the cart
 var emptydiv= document.getElementById("emptycart");
-function addtocart()
+async function addtocart()
 {
     
 
@@ -735,7 +740,7 @@ function addtocart()
         emptydiv.append(sportname, courtnamediv, timedatecartdiv, costdiv, horizontal,checkoutcostdiv);
     }
    else{
-       alert("Please select the field before adding to cart");
+       await alert("Please select the field before adding to cart");
     }
 
 
@@ -744,6 +749,7 @@ function addtocart()
 
    checkoutbutton.addEventListener("click", ()=>{
 
+   
 
     let price = count*2200;
     localStorage.setItem("finalPrice", price);
@@ -751,7 +757,7 @@ function addtocart()
     console.log(loginstat)
     if(loginstat === "true"){
         if(cartobj.club_id != undefined && cartobj.user_id != undefined && cartobj.time != undefined && cartobj.cost != undefined){
-            
+
             localStorage.setItem("cart_details" , JSON.stringify(cartobj));
             window.location.href = "pay.html";
         }
@@ -779,7 +785,14 @@ function addtocart()
 document.querySelector("#btn2").addEventListener("click", ()=>{
     let price1 = count*2200;
     localStorage.setItem("finalPrice", price1);
-    window.location.href = "pay.html";
+    if(cartobj.club_id != undefined && cartobj.user_id != undefined && cartobj.time != undefined && cartobj.cost != undefined){
+
+        localStorage.setItem("cart_details" , JSON.stringify(cartobj));
+        window.location.href = "pay.html";
+    }
+    else{
+        alert("Please select the field before adding to checkout");
+    }
 })
 
 // these for import the footer

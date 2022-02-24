@@ -265,9 +265,21 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
 
 
     document.querySelector("#booknow_btn").addEventListener("click", ()=>{
+        let loginstat = localStorage.getItem("login");
+        if(loginstat == "true"){
         window.location.href = "bookVenue.html";
+        }
+        else{
+            modal_container.classList.add("show")
+        }
     })
 
     document.querySelector("#booknow_btn2").addEventListener("click", ()=>{
+        let loginstat = localStorage.getItem("login");
+        if(loginstat == "true"){
         window.location.href = "bookVenue.html";
+        }
+        else{
+            modal_container.classList.add("show")
+        }
     })
