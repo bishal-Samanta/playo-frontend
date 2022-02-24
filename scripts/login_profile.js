@@ -17,6 +17,14 @@ var mobnum = JSON.parse(localStorage.getItem("mobileNumber"))
   document.querySelector("#mob").textContent = mobnum;
   document.querySelector("#pp3").textContent = mobnum;
 
+
+    //If user details already exist
+  
+
+    
+
+
+
 //Code start
 
 // let array_data = [];
@@ -108,9 +116,23 @@ function checkDone(){
     }
 
     else{
-        document.querySelector(".firstname").placeholder =  "First Name*";
-        document.querySelector(".lastname").placeholder =  "Last Name*";
-        document.querySelector(".email").placeholder =  "Email*";
+
+        let data = JSON.parse(localStorage.getItem("user_details"));
+        console.log(data)
+        let user = data.user;
+    
+        let {firstName , lastName , email } = user;
+        if(firstName != undefined && lastName != undefined && email != undefined){
+            document.querySelector(".firstname").placeholder = firstName;
+            document.querySelector(".lastname").placeholder =  lastName;
+            document.querySelector(".email").placeholder =  email;
+    
+        }
+        else{
+            document.querySelector(".firstname").placeholder =  "First Name*";
+            document.querySelector(".lastname").placeholder =  "Last Name*";
+            document.querySelector(".email").placeholder =  "Email*";
+        }
     }
 }
 
