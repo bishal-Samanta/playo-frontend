@@ -57,9 +57,8 @@ async function getvenues() {
 getvenues();
 
 
-// // importing footer from component file
-// let foot= document.getElementById("footer");
+let foot= document.getElementById("footer");
 
-// import footer from "../components/footer.js";
+    import footer from "../components/footer.js";
 
-// foot.innerHTML= footer();
+    foot.innerHTML= footer();
