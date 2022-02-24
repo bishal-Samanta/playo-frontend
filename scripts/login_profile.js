@@ -138,8 +138,7 @@ function checkDone(){
 
 
 document.querySelector("#save").addEventListener("click", ()=>{
-    let mongo = JSON.parse(localStorage.getItem("user_details"));
-    let mongoid = mongo.user._id;
+    
     //console.log(mongo)
 
      let f = document.querySelector(".firstname").value;
@@ -163,6 +162,10 @@ document.querySelector("#save").addEventListener("click", ()=>{
          email: obj.e,
          mobileNumber: mobnum
      }
+
+
+     let mongo = JSON.parse(localStorage.getItem("user_details"));
+     let mongoid = mongo.user._id;
 
      let link = `https://playo-backend.herokuapp.com/login/${mongoid}`;
      fetch( link ,
@@ -234,7 +237,7 @@ document.querySelector("#reset").addEventListener("click", ()=>{
     document.querySelector(".firstname").placeholder =  "First Name*";
     document.querySelector(".lastname").placeholder =  "Last Name*";
     document.querySelector(".email").placeholder =  "Email*";
-    window.localStorage.removeItem('user_details');
+    // window.localStorage.removeItem('user_details');
     localStorage.setItem("givedetails", false);
     alert("Please update the details you want")
     
