@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <title>Add venue admin page</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: 'lato', sans-serif;
+        }
+        /* these style for navbar  */
+        #navbar{
+            display: flex;
+            width:100%;
+            height: 70px;
+            border: 1px solid transparent;
+            padding: 1% 6%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #menutitle{
+            height: 100%;
+            width: 20%;
+            margin-left: 9.5%;
+            margin-top: 5px;
+            font-size: 30px;
+            color:#4daa0b;
+            border: 1px solid transparent;
+        }
+
+        /* these style for middle stuff main container */
+        #mainbody{
+            display: flex;
+            width: 100%;
+            height: 600px;
+            border: 1px solid transparent ;
+        }
+
+        /* these style for left side slidebar */
+        #sidebar{
+            padding-top: 2%;
+            padding-left: 5%;
+            width:20%;
+            height: 100%;
+            border: 1px solid transparent;
+            background-color: #212121;
+        }
+
+        .sidebar_menu{
+            width: 100%;
+            height:8%;
+            text-align: left;
+            margin-bottom: 5%;
+            padding-left: 5%;
+            /* margin-top: 10%; */
+            font-size: 18px; 
+            border: none;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            background: transparent;
+            color: white;
+        }
+
+        .sidebar_menu:hover{
+            background-color:#4daa0b;
+            cursor: pointer;
+        }
+        /* these style for main content div right side to the slide bar */
+        #content{
+            /* margin-left: 3%; */
+            padding: 3%;
+            width:75%;
+            height: 100%;
+            border: 1px solid transparent;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        #content::-webkit-scrollbar{
+            background-color: white;
+        }
+        #content::-webkit-scrollbar-thumb{
+            background: #212121;
+        }
+
+        /* these is for footer */
+        #footer{
+            width: 100%;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        /* styes for addvenue and update venue stuff */
+        
+        /* these styles for containers of addvenue and update venue */
+        #venuecontainer{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            border: 1px solid transparent;
+        }
+        #addvenueleft{
+            width: 48%;
+            height: 100%;
+            border: 2px solid #4daa0b;
+            overflow: auto;
+        }
+        #addvenueright{
+            width: 48%;
+            height: 100%;
+            margin-left: 4%;
+            border: 2px solid #4daa0b;
+            overflow: auto;
+        }
+        #addvenuetitle{
+            width:100%;
+            height:10%;
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding-top: 2%;
+            font-size: 20px;
+        }
+        #updatevenuetitle{
+            width:100%;
+            height:10%;
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding-top: 2%;
+            font-size: 20px;
+        }
+
+        /* these style for input boxes in the add venue div */
+        .inputbox1{
+            width: 70%;
+            height: 30px;
+            margin-left: 15%;
+            margin-top: 3%;
+
+        }
+        #addvenuebutton{
+            margin-left: 38%;
+            margin-top: 3%;
+            padding: 1% 5%;
+            background-color: #212121;
+            color: white;
+        }
+        #addvenuebutton:hover{
+            background-color: #4daa0b;
+        }
+        /* these style for input boxes in the update venue div */
+        .inputbox2{
+            width: 70%;
+            height: 30px;
+            margin-left: 15%;
+            margin-top: 3%;
+
+        }
+        #updatevenuebutton{
+            margin-left: 38%;
+            margin-top: 3%;
+            padding: 1% 5%;
+            background-color: #212121;
+            color: white;
+        }
+        #updatevenuebutton:hover{
+            background-color: #4daa0b;
+        }
+        /* styles for add venue and update venue end */
+
+        
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img src="https://playo-website.gumlet.net/logo/playo-logo-header-website.png?auto=compress,format&q=90" width="130px" height="40px">
+        <!-- these is for showing menu name on navbar -->
+        <div id="menutitle">Add Venue</div>
+    </div>
+
+    <!-- these is main body of admin page -->
+    <div id="mainbody">
+        <!-- these is sidebar menu -->
+        <div id="sidebar">
+            <a href="admin.html"><button class="sidebar_menu" id="dashboard"><span class = "las la-igloo" style="margin-right: 4%"></span>Dashboard</button></a><br>
+            <a href="userlistadmin.html"><button class="sidebar_menu" id="userlist"><span class = "lar la-file-alt" style="margin-right: 4%"></span>Users List</button></a><br>
+            <a href="addvenueadmin.html"><button class="sidebar_menu" id="addvenue"><span class = "lab la-microsoft" style="margin-right: 4%"></span>Add Venue</button></a><br>
+            <a href="addeventadmin.html"><button class="sidebar_menu" id="addevent"><span class = "lar la-list-alt" style="margin-right: 4%"></span>Add Event</button></a><br>
+            <a href="venueslistadmin.html"><button class="sidebar_menu" id="allvenues"><span class = "las la-braille" style="margin-right: 4%"></span>Venues List</button></a><br>
+            <a href="eventslistadmin.html"><button class="sidebar_menu" id="allevents"><span class = "las la-braille" style="margin-right: 4%"></span>Events List</button></a><br>
+            <a href="bookingsadmin.html"><button class="sidebar_menu" id="bookings"><span class = "las la-book" style="margin-right: 4%"></span>Bookings</button></a><br>
+        </div>
+        <!-- these is right side content  -->
+        <div id="content">
+            <div id="venuecontainer">
+                <div id="addvenueleft">
+                    <div id="addvenuetitle">Add Venue</div>
+                    <form id="addvenueform" >
+                        <input class="inputbox1" id="venuename" type="text" placeholder="venue name" name=""><br>
+                        <input class="inputbox1" id="venuelandmark" type="text" placeholder="Enter landmark" name=""><br>
+                        <input class="inputbox1" id="venueaddress" type="text" placeholder="Enter full address" name=""><br>
+                        <input class="inputbox1" id="venuecity" type="text" placeholder="Enter city" name=""><br>
+                        <input class="inputbox1" id="venueimage" type="text" placeholder="Image Url" name=""><br>
+                        <input class="inputbox1" id="venuetime" type="text" placeholder="Enter timing" name=""><br>
+                        <input  id="addvenuebutton" type="submit" value="Add Venue"><br>
+                    </form>
+                </div>
+                <div id="addvenueright">
+                    <div id="updatevenuetitle">Update Venue</div>
+                    <form id="updatevenueform" >
+                        <input class="inputbox2" id="venueid" type="text" placeholder="Enter ID" name=""><br>
+                        <input class="inputbox2" id="venuename2" type="text" placeholder="venue name" name=""><br>
+                        <input class="inputbox2" id="venuelandmark2" type="text" placeholder="Enter landmark" name=""><br>
+                        <input class="inputbox2" id="venueaddress2" type="text" placeholder="Enter full address" name=""><br>
+                        <input class="inputbox2" id="venuecity2" type="text" placeholder="Enter city" name=""><br>
+                        <input class="inputbox2" id="venueimage2" type="text" placeholder="Image Url" name=""><br>
+                        <input class="inputbox2" id="venuetime2" type="text" placeholder="Enter timing" name=""><br>
+                        <input  id="updatevenuebutton" type="submit" value="Add Venue"><br>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div id="footer">
+        
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById("addvenueform").addEventListener("submit", collectvenuedata)
+    function collectvenuedata(event){
+        event.preventDefault();
+        var venuename = document.getElementById("venuename").value;
+        var venuelandmark = document.getElementById("venuelandmark").value;
+        var venueaddress = document.getElementById("venueaddress").value;
+        var venuecity = document.getElementById("venuecity").value;
+        var venueimage = document.getElementById("venueimage").value;
+        var venuetime = document.getElementById("venuetime").value;
+        console.log(venuename,venuelandmark,venueaddress,venuecity,venueimage,venuetime)
+
+    }
+
+
+    document.getElementById("updatevenueform").addEventListener("submit", updatevenuedata)
+    function updatevenuedata(event){
+        event.preventDefault();
+        var venueid = document.getElementById("venueid").value;
+        var venuename2 = document.getElementById("venuename2").value;
+        var venuelandmark2 = document.getElementById("venuelandmark2").value;
+        var venueaddress2 = document.getElementById("venueaddress2").value;
+        var venuecity2 = document.getElementById("venuecity2").value;
+        var venueimage2 = document.getElementById("venueimage2").value;
+        var venuetime2 = document.getElementById("venuetime2").value;
+        console.log(venueid,venuename2,venuelandmark2,venueaddress2,venuecity2,venueimage2,venuetime2)
+    }
+</script>
