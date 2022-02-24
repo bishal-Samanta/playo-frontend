@@ -119,14 +119,16 @@ function checkDone(){
 
         let data = JSON.parse(localStorage.getItem("user_details"));
         console.log(data)
-        let user = data.user;
-    
-        let {firstName , lastName , email } = user;
-        if(firstName != undefined && lastName != undefined && email != undefined){
-            document.querySelector(".firstname").placeholder = firstName;
-            document.querySelector(".lastname").placeholder =  lastName;
-            document.querySelector(".email").placeholder =  email;
-    
+        
+        if(data.user){
+            let user = data.user;
+            let {firstName , lastName , email } = user;
+            if(firstName != undefined && lastName != undefined && email != undefined){
+                document.querySelector(".firstname").placeholder = firstName;
+                document.querySelector(".lastname").placeholder =  lastName;
+                document.querySelector(".email").placeholder =  email;
+        
+            }
         }
         else{
             document.querySelector(".firstname").placeholder =  "First Name*";

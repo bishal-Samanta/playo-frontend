@@ -1,5 +1,4 @@
 
-
 //Login and pop up full functionalities start
 
 document.querySelector("#logo").addEventListener("click", ()=>{
@@ -36,6 +35,16 @@ function login(){
         let ph = localStorage.getItem("mobileNumber");
         console.log(ph)
         document.querySelector("#myBtn").textContent = ph;
+        //Post request to database
+
+
+
+
+
+
+
+
+        
         open.addEventListener("click", ()=>{
             modal_container.classList.remove("show")
             window.location.href = "login_profile.html";
@@ -78,6 +87,33 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
                 modal_container.classList.remove("show")
                 document.querySelector("#myBtn").textContent = mobNo;
                 localStorage.setItem("login", true);
+                
+                //Login 
+                 //Make Post request
+                 let obj = {
+                    mobileNumber: mobNo
+                 }
+
+                    fetch("https://playo-backend.herokuapp.com/login",
+                    {
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        method: "POST",
+                        body: JSON.stringify(obj)
+                    })
+                    .then((res)=>{
+                        return res.text()
+                    })
+                    .then((res)=>{
+                        console.log(res);
+                        localStorage.setItem("user_details" , res);
+                    })
+                    .catch((e)=>{
+                        console.log(e);
+                    })
+
 
 
                 open.addEventListener("click", ()=>{
