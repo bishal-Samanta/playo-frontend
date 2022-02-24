@@ -81,9 +81,9 @@
      console.log(eventid,eventname2,eventaddress2,eventcity2,eventimage2,eventtime2,playid2,eventimage22,eventoverview2,eventgoals2)
  }
 
- // importing footer from component file
- // let foot= document.getElementById("footer");
+//  importing footer from component file
+ let foot= document.getElementById("footer");
 
- // import footer from "../components/footer.js";
+ import footer from "../components/footer.js";
 
- // foot.innerHTML= footer();
+ foot.innerHTML= footer();
