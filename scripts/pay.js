@@ -133,24 +133,94 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
 
     let price = localStorage.getItem("finalPrice") * 100
 
+    let cart = localStorage.getItem("cart_details")
+    cart = JSON.parse(cart)
+    console.log(cart)
 
-    var options = {
-        "key": "rzp_test_YRchQmUUNwRgXd", // Enter the Key ID generated from the Dashboard
-        "amount": price, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
-        "name": "Playo",
-        "description": "Test Payment",
-        "image": "https://playo-website.gumlet.net/logo/playo-logo-header-website.png?auto=compress,format&q=90",
-        // "order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step
-        // "account_id": "acc_Ef7ArAsdU5t0XL",
-        "handler": function (response){
-            alert(response.razorpay_payment_id);
-            alert(response.razorpay_order_id);
-            alert(response.razorpay_signature)
+    // var options = {
+    //     "key": "rzp_test_YRchQmUUNwRgXd", // Enter the Key ID generated from the Dashboard
+    //     "amount": price, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    //     "currency": "INR",
+    //     "name": "Playo",
+    //     "description": "Test Payment",
+    //     "image": "https://playo-website.gumlet.net/logo/playo-logo-header-website.png?auto=compress,format&q=90",
+    //     // "order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step
+    //     // "account_id": "acc_Ef7ArAsdU5t0XL",
+    //     "handler": function (response){
+    //         alert(response.razorpay_payment_id);
+    //         alert(response.razorpay_order_id);
+    //         alert(response.razorpay_signature)
+    //     }
+    // };
+    // var rzp1 = new Razorpay(options);
+    // document.getElementById('rzp-button1').onclick = function(e){
+    //     rzp1.open();
+    //     e.preventDefault();
+    // }
+
+   var obj = {
+       price: price
+   }
+
+
+    fetch("https://playo-backend.herokuapp.com/order/create",
+    {
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(obj)
+    })
+    .then((res)=>{
+        return res.text()
+    })
+    .then((res)=>{
+        //console.log(res);
+        res = JSON.parse(res)
+        console.log(res)
+
+        var options = {
+            "key": "rzp_test_YRchQmUUNwRgXd", 
+            "currency": "INR",
+            "name": "Playo-Clone",
+            "description": "Test Transaction",
+            "image": "https://playo-website.imgix.net/company/logo1.png?auto=compress,format",
+            "order_id": res.id, 
+            "callback_url": "https://playo-backend.herokuapp.com/order/status",
+            "theme": {
+                "color": "#3399cc"
+            },
+            
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            
+            "theme": {
+                "color": "#679F00"
+            }
+
+           
+        };
+
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
         }
-    };
-    var rzp1 = new Razorpay(options);
-    document.getElementById('rzp-button1').onclick = function(e){
-        rzp1.open();
-        e.preventDefault();
-    }
+
+
+
+
+
+
+
+
+    })
+    .catch((e)=>{
+        console.log(e);
+    })
+
+         
