@@ -200,14 +200,15 @@
                 <div id="addeventleft">
                     <div id="addeventtitle">Add event</div>
                     <form id="addeventform" method="post" action="/">
-                        <input class="inputbox3" id="eventname" type="text" placeholder="event name"  name=""><br>
-                        <input class="inputbox3" id="eventlandmark" type="text" placeholder="Enter Club/Academy name" name=""><br>
+                        <input class="inputbox3" id="eventname" type="text" placeholder="Enter Club/Academy name"  name=""><br>
                         <input class="inputbox3" id="eventaddress" type="text" placeholder="Enter full address" name=""><br>
                         <input class="inputbox3" id="eventcity" type="text" placeholder="Enter city" name=""><br>
                         <input class="inputbox3" id="eventimage" type="text" placeholder="Image Url" name=""><br>
                         <input class="inputbox3" id="eventtime" type="text" placeholder="Enter timing" name=""><br>
-                        <input class="inputbox3" id="eventphone" type="number" placeholder="Phone number" name=""><br>
+                        <input class="inputbox3" id="playid" type="text" placeholder="Enter ID number" name=""><br>
+                        <input class="inputbox3" id="eventimage12" type="text" placeholder="Image Two Url" name=""><br>
                         <input class="inputbox3" id="eventoverview" type="text" placeholder="Enter overview" name=""><br>
+                        <input class="inputbox3" id="eventgoals" type="text" placeholder="Enter goals" name=""><br>
                         <input  id="addeventbutton" type="submit" value="Add event"><br>
                     </form>
                 </div>
@@ -215,13 +216,15 @@
                     <div id="updateeventtitle">Update event</div>
                     <form id="updateeventform" method="post" action="/">
                         <input class="inputbox4" id="eventid" type="text" placeholder="Enter ID" name=""><br>
-                        <input class="inputbox4" id="eventname2" type="text" placeholder="event name" name=""><br>
-                        <input class="inputbox4" id="eventlandmark2" type="text" placeholder="Enter Club/Academy name" name=""><br>
-                        <input class="inputbox4" id="eventaddress2" type="text" placeholder="Enter full address" name=""><br>
-                        <input class="inputbox4" id="eventcity2" type="text" placeholder="Enter city" name=""><br>
-                        <input class="inputbox4" id="eventimage2" type="text" placeholder="Image Url" name=""><br>
-                        <input class="inputbox4" id="eventtime2" type="text" placeholder="Enter timing" name=""><br>
-                        <input class="inputbox3" id="eventphone2" type="number" placeholder="Phone number" name=""><br>
+                        <input class="inputbox3" id="eventname2" type="text" placeholder="Enter Club/Academy name"  name=""><br>
+                        <input class="inputbox3" id="eventaddress2" type="text" placeholder="Enter full address" name=""><br>
+                        <input class="inputbox3" id="eventcity2" type="text" placeholder="Enter city" name=""><br>
+                        <input class="inputbox3" id="eventimage2" type="text" placeholder="Image Url" name=""><br>
+                        <input class="inputbox3" id="eventtime2" type="text" placeholder="Enter timing" name=""><br>
+                        <input class="inputbox3" id="playid2" type="text" placeholder="Enter ID number" name=""><br>
+                        <input class="inputbox3" id="eventimage22" type="text" placeholder="Image Two Url" name=""><br>
+                        <input class="inputbox3" id="eventoverview2" type="text" placeholder="Enter overview" name=""><br>
+                        <input class="inputbox3" id="eventgoals2" type="text" placeholder="Enter goals" name=""><br>
                         <input  id="updateeventbutton" type="submit" value="Add event"><br>
                     </form>
                 </div>
@@ -235,32 +238,87 @@
 </body>
 </html>
 <script>
+
+    // function for getting event data from admin
     document.getElementById("addeventform").addEventListener("submit", collecteventdata)
     function collecteventdata(event){
         event.preventDefault();
         var eventname = document.getElementById("eventname").value;
-        var eventlandmark = document.getElementById("eventlandmark").value;
         var eventaddress = document.getElementById("eventaddress").value;
         var eventcity = document.getElementById("eventcity").value;
         var eventimage = document.getElementById("eventimage").value;
         var eventtime = document.getElementById("eventtime").value;
-        var eventphone = document.getElementById("eventphone").value;
+        var playid = document.getElementById("playid").value;
+        var eventimage12 = document.getElementById("eventimage12").value;
         var eventoverview = document.getElementById("eventoverview").value;
-        console.log(eventname,eventlandmark,eventaddress,eventcity,eventimage,eventtime,eventphone,eventoverview)
+        var eventgoals = document.getElementById("eventgoals").value;
+
+        let addeventobject = {
+            city : eventcity,
+            name : eventname,
+            location: eventaddress,
+            image : eventimage,
+            timing : eventtime,
+            id : playid,
+            image2 : eventimage12,
+            overview : eventoverview,
+            goals : eventgoals,
+        }
+
+        // post request for add function code from bishal
+
+        fetch("https://playo-backend.herokuapp.com/events",
+                    {
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        method: "POST",
+                        body: JSON.stringify(addeventobject)
+                    })
+                    .then((res)=>{
+                        return res.text()
+                    })
+                    .then((res)=>{
+                        console.log(res);
+                        // localStorage.setItem("user_details" , res);
+                    })
+                    .catch((e)=>{
+                        console.log(e);
+                    })
+        console.log(addeventobject)
+        console.log(eventname,eventaddress,eventcity,eventimage,eventtime,playid,eventimage12,eventoverview,eventgoals)
     }
 
+        // function for update event data from admin
     document.getElementById("updateeventform").addEventListener("submit", updateeventdata)
     function updateeventdata(event){
         event.preventDefault();
         var eventid = document.getElementById("eventid").value;
         var eventname2 = document.getElementById("eventname2").value;
-        var eventlandmark2 = document.getElementById("eventlandmark2").value;
         var eventaddress2 = document.getElementById("eventaddress2").value;
         var eventcity2 = document.getElementById("eventcity2").value;
         var eventimage2 = document.getElementById("eventimage2").value;
         var eventtime2 = document.getElementById("eventtime2").value;
-        var eventphone2 = document.getElementById("eventphone2").value;
+        var playid2 = document.getElementById("playid2").value;
+        var eventimage22 = document.getElementById("eventimage22").value;
         var eventoverview2 = document.getElementById("eventoverview2").value;
-        console.log(eventid,eventname2,eventlandmark2,eventaddress2,eventcity2,eventimage2,eventtime2,eventphone2,eventoverview2)
+        var eventgoals2 = document.getElementById("eventgoals2").value;
+
+        let addeventobject = {
+            _id : eventid,
+            city : eventcity2,
+            name : eventname2,
+            location: eventaddress2,
+            image : eventimage2,
+            timing : eventtime2,
+            id : playid2,
+            image2 : eventimage22,
+            overview : eventoverview2,
+            goals : eventgoals2,
+        }
+
+        console.log(addeventobject)
+        console.log(eventid,eventname2,eventaddress2,eventcity2,eventimage2,eventtime2,playid2,eventimage22,eventoverview2,eventgoals2)
     }
 </script>

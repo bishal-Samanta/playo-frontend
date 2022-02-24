@@ -201,11 +201,11 @@
                     <div id="addvenuetitle">Add Venue</div>
                     <form id="addvenueform" >
                         <input class="inputbox1" id="venuename" type="text" placeholder="venue name" name=""><br>
-                        <input class="inputbox1" id="venuelandmark" type="text" placeholder="Enter landmark" name=""><br>
-                        <input class="inputbox1" id="venueaddress" type="text" placeholder="Enter full address" name=""><br>
+                        <input class="inputbox1" id="lat" type="number" placeholder="Enter latitude" name=""><br>
+                        <input class="inputbox1" id="lng" type="number" placeholder="Enter longitude" name=""><br>
                         <input class="inputbox1" id="venuecity" type="text" placeholder="Enter city" name=""><br>
                         <input class="inputbox1" id="venueimage" type="text" placeholder="Image Url" name=""><br>
-                        <input class="inputbox1" id="venuetime" type="text" placeholder="Enter timing" name=""><br>
+                        <input class="inputbox1" id="sportname" type="text" placeholder="Enter sports name" name=""><br>
                         <input  id="addvenuebutton" type="submit" value="Add Venue"><br>
                     </form>
                 </div>
@@ -214,11 +214,11 @@
                     <form id="updatevenueform" >
                         <input class="inputbox2" id="venueid" type="text" placeholder="Enter ID" name=""><br>
                         <input class="inputbox2" id="venuename2" type="text" placeholder="venue name" name=""><br>
-                        <input class="inputbox2" id="venuelandmark2" type="text" placeholder="Enter landmark" name=""><br>
-                        <input class="inputbox2" id="venueaddress2" type="text" placeholder="Enter full address" name=""><br>
+                        <input class="inputbox2" id="lat2" type="number" placeholder="Enter latitude" name=""><br>
+                        <input class="inputbox2" id="lng2" type="number" placeholder="Enter longitude" name=""><br>
                         <input class="inputbox2" id="venuecity2" type="text" placeholder="Enter city" name=""><br>
                         <input class="inputbox2" id="venueimage2" type="text" placeholder="Image Url" name=""><br>
-                        <input class="inputbox2" id="venuetime2" type="text" placeholder="Enter timing" name=""><br>
+                        <input class="inputbox2" id="sportname2" type="text" placeholder="Enter sports name" name=""><br>
                         <input  id="updatevenuebutton" type="submit" value="Add Venue"><br>
                     </form>
                 </div>
@@ -232,30 +232,76 @@
 </body>
 </html>
 <script>
+    // getting user inputs from add venue wala form
     document.getElementById("addvenueform").addEventListener("submit", collectvenuedata)
     function collectvenuedata(event){
         event.preventDefault();
         var venuename = document.getElementById("venuename").value;
-        var venuelandmark = document.getElementById("venuelandmark").value;
-        var venueaddress = document.getElementById("venueaddress").value;
+        var lat = document.getElementById("lat").value;
+        var lng = document.getElementById("lng").value;
         var venuecity = document.getElementById("venuecity").value;
         var venueimage = document.getElementById("venueimage").value;
-        var venuetime = document.getElementById("venuetime").value;
-        console.log(venuename,venuelandmark,venueaddress,venuecity,venueimage,venuetime)
+        var sportname = document.getElementById("sportname").value;
+
+        let addvenueobject = {
+            name : venuename,
+            lat : lat,
+            lng : lng,
+            location : venuecity,
+            imgUrl : venueimage,
+            filter_by : sportname,
+        }
+
+        // post request for add function code from bishal
+
+        fetch("http://playo-backend.herokuapp.com/venues",
+                    {
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        method: "POST",
+                        body: JSON.stringify(addvenueobject)
+                    })
+                    .then((res)=>{
+                        return res.text()
+                    })
+                    .then((res)=>{
+                        console.log(res);
+                        // localStorage.setItem("user_details" , res);
+                    })
+                    .catch((e)=>{
+                        console.log(e);
+                    })
+        console.log(addvenueobject);
+        console.log(venuename,lat,lng,venuecity,venueimage,sportname);
 
     }
 
-
+        // getting user inputs from update venue wala form
     document.getElementById("updatevenueform").addEventListener("submit", updatevenuedata)
     function updatevenuedata(event){
         event.preventDefault();
         var venueid = document.getElementById("venueid").value;
         var venuename2 = document.getElementById("venuename2").value;
-        var venuelandmark2 = document.getElementById("venuelandmark2").value;
-        var venueaddress2 = document.getElementById("venueaddress2").value;
+        var lat2 = document.getElementById("lat2").value;
+        var lng2 = document.getElementById("lng2").value;
         var venuecity2 = document.getElementById("venuecity2").value;
         var venueimage2 = document.getElementById("venueimage2").value;
-        var venuetime2 = document.getElementById("venuetime2").value;
-        console.log(venueid,venuename2,venuelandmark2,venueaddress2,venuecity2,venueimage2,venuetime2)
+        var sportname2 = document.getElementById("sportname2").value;
+
+        let updatevenueobject = {
+            _id : venueid,
+            name : venuename2,
+            lat : lat2,
+            lng : lng2,
+            location : venuecity2,
+            imgUrl : venueimage2,
+            filter_by : sportname2,
+        }
+
+                    
+        console.log(updatevenueobject);
+        console.log(venueid,venuename2,lat2,lng2,venuecity2,venueimage2,sportname2)
     }
 </script>
