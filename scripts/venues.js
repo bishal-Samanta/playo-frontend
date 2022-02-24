@@ -108,7 +108,7 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
                     })
                     .then((res)=>{
                         console.log(res);
-                        localStorage.setItem("mongoData" , res);
+                        localStorage.setItem("user_details" , res);
                     })
                     .catch((e)=>{
                         console.log(e);

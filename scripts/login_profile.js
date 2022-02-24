@@ -96,10 +96,13 @@ function checkDone(){
          if(loginstat === "true"){
 
              let data = JSON.parse(localStorage.getItem("user_details"));
-             let {f , l , e} = data;
-             document.querySelector(".firstname").placeholder = f;
-             document.querySelector(".lastname").placeholder =  l;
-             document.querySelector(".email").placeholder =  e;
+             let user = data.user;
+
+             let {firstName , lastName , email } = user;
+             
+             document.querySelector(".firstname").placeholder = firstName;
+             document.querySelector(".lastname").placeholder =  lastName;
+             document.querySelector(".email").placeholder =  email;
         
        }
     }
@@ -113,7 +116,9 @@ function checkDone(){
 
 
 document.querySelector("#save").addEventListener("click", ()=>{
-
+    let mongo = JSON.parse(localStorage.getItem("user_details"));
+    let mongoid = mongo.user._id;
+    //console.log(mongo)
 
      let f = document.querySelector(".firstname").value;
      let l = document.querySelector(".lastname").value;
@@ -137,14 +142,14 @@ document.querySelector("#save").addEventListener("click", ()=>{
          mobileNumber: mobnum
      }
 
-     let link = "https://playo-backend.herokuapp.com/login";
+     let link = `https://playo-backend.herokuapp.com/login/${mongoid}`;
      fetch( link ,
      {
          headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json'
          },
-         method: "POST",
+         method: "PATCH",
          body: JSON.stringify(userObj)
      })
      .then((res)=>{
@@ -162,7 +167,7 @@ document.querySelector("#save").addEventListener("click", ()=>{
          }
          else{
 
-            localStorage.setItem("user_details", JSON.stringify(obj));
+            localStorage.setItem("user_details", JSON.stringify(res));
             localStorage.setItem("givedetails", true);
 
 
@@ -170,10 +175,13 @@ document.querySelector("#save").addEventListener("click", ()=>{
            if(loginstat === "true"){
 
              let data = JSON.parse(localStorage.getItem("user_details"));
-             let {f , l , e} = data;
-             document.querySelector(".firstname").placeholder = f;
-             document.querySelector(".lastname").placeholder =  l;
-             document.querySelector(".email").placeholder =  e;
+             //User
+             let user = data.user;
+
+             let {firstName , lastName , email } = user;
+             document.querySelector(".firstname").placeholder = firstName;
+             document.querySelector(".lastname").placeholder =  lastName;
+             document.querySelector(".email").placeholder =  email;
         
        }
 
