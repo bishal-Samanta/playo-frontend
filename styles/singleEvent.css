@@ -12,7 +12,7 @@
     width: 43%;
     border: 1px solid transparent;
     margin-left: 13%;
-    gap: 150px;
+    /* gap: 150px; */
     margin-bottom: 50px;
     min-height: 100vh;
   }
