@@ -1,3 +1,23 @@
+
+// these is function for fetch bookings count from our heroku serever
+let url = "https://playo-backend.herokuapp.com/orders";
+async function getorders() {
+  try {
+          let res = await fetch(url);
+
+          let response = await res.json();
+
+          let orders = response;
+          console.log(orders)
+          document.getElementById("bookingnum").innerText= orders.length;
+  } 
+  catch (err) {
+      console.log("err:", err);
+  }
+}
+getorders();
+
+
 // these is function for fetch users count from our heroku server 
 let url = "https://playo-backend.herokuapp.com/login";
 async function getUsers() {
