@@ -17,6 +17,14 @@ var mobnum = JSON.parse(localStorage.getItem("mobileNumber"))
   document.querySelector("#mob").textContent = mobnum;
   document.querySelector("#pp3").textContent = mobnum;
 
+
+    //If user details already exist
+  
+
+    
+
+
+
 //Code start
 
 // let array_data = [];
@@ -96,24 +104,44 @@ function checkDone(){
          if(loginstat === "true"){
 
              let data = JSON.parse(localStorage.getItem("user_details"));
-             let {f , l , e} = data;
-             document.querySelector(".firstname").placeholder = f;
-             document.querySelector(".lastname").placeholder =  l;
-             document.querySelector(".email").placeholder =  e;
+             let user = data.user;
+
+             let {firstName , lastName , email } = user;
+             
+             document.querySelector(".firstname").placeholder = firstName;
+             document.querySelector(".lastname").placeholder =  lastName;
+             document.querySelector(".email").placeholder =  email;
         
        }
     }
 
     else{
-        document.querySelector(".firstname").placeholder =  "First Name*";
-        document.querySelector(".lastname").placeholder =  "Last Name*";
-        document.querySelector(".email").placeholder =  "Email*";
+
+        let data = JSON.parse(localStorage.getItem("user_details"));
+        console.log(data)
+        
+        if(data.user){
+            let user = data.user;
+            let {firstName , lastName , email } = user;
+            if(firstName != undefined && lastName != undefined && email != undefined){
+                document.querySelector(".firstname").placeholder = firstName;
+                document.querySelector(".lastname").placeholder =  lastName;
+                document.querySelector(".email").placeholder =  email;
+        
+            }
+        }
+        else{
+            document.querySelector(".firstname").placeholder =  "First Name*";
+            document.querySelector(".lastname").placeholder =  "Last Name*";
+            document.querySelector(".email").placeholder =  "Email*";
+        }
     }
 }
 
 
 document.querySelector("#save").addEventListener("click", ()=>{
-
+    
+    //console.log(mongo)
 
      let f = document.querySelector(".firstname").value;
      let l = document.querySelector(".lastname").value;
@@ -137,14 +165,18 @@ document.querySelector("#save").addEventListener("click", ()=>{
          mobileNumber: mobnum
      }
 
-     let link = "https://playo-backend.herokuapp.com/login";
+
+     let mongo = JSON.parse(localStorage.getItem("user_details"));
+     let mongoid = mongo.user._id;
+
+     let link = `https://playo-backend.herokuapp.com/login/${mongoid}`;
      fetch( link ,
      {
          headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json'
          },
-         method: "POST",
+         method: "PATCH",
          body: JSON.stringify(userObj)
      })
      .then((res)=>{
@@ -162,7 +194,7 @@ document.querySelector("#save").addEventListener("click", ()=>{
          }
          else{
 
-            localStorage.setItem("user_details", JSON.stringify(obj));
+            localStorage.setItem("user_details", JSON.stringify(res));
             localStorage.setItem("givedetails", true);
 
 
@@ -170,10 +202,13 @@ document.querySelector("#save").addEventListener("click", ()=>{
            if(loginstat === "true"){
 
              let data = JSON.parse(localStorage.getItem("user_details"));
-             let {f , l , e} = data;
-             document.querySelector(".firstname").placeholder = f;
-             document.querySelector(".lastname").placeholder =  l;
-             document.querySelector(".email").placeholder =  e;
+             //User
+             let user = data.user;
+
+             let {firstName , lastName , email } = user;
+             document.querySelector(".firstname").placeholder = firstName;
+             document.querySelector(".lastname").placeholder =  lastName;
+             document.querySelector(".email").placeholder =  email;
         
        }
 
@@ -204,7 +239,7 @@ document.querySelector("#reset").addEventListener("click", ()=>{
     document.querySelector(".firstname").placeholder =  "First Name*";
     document.querySelector(".lastname").placeholder =  "Last Name*";
     document.querySelector(".email").placeholder =  "Email*";
-    window.localStorage.removeItem('user_details');
+    // window.localStorage.removeItem('user_details');
     localStorage.setItem("givedetails", false);
     alert("Please update the details you want")
     

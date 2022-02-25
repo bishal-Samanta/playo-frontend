@@ -1,6 +1,7 @@
 
 
 
+
     
 //Login and pop up full functionalities start
 
@@ -38,6 +39,16 @@ function login(){
         let ph = localStorage.getItem("mobileNumber");
         console.log(ph)
         document.querySelector("#myBtn").textContent = ph;
+        //Post request to database
+
+
+
+
+
+
+
+
+        
         open.addEventListener("click", ()=>{
             modal_container.classList.remove("show")
             window.location.href = "login_profile.html";
@@ -80,6 +91,33 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
                 modal_container.classList.remove("show")
                 document.querySelector("#myBtn").textContent = mobNo;
                 localStorage.setItem("login", true);
+                
+                //Login 
+                 //Make Post request
+                 let obj = {
+                    mobileNumber: mobNo
+                 }
+
+                    fetch("https://playo-backend.herokuapp.com/login",
+                    {
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        method: "POST",
+                        body: JSON.stringify(obj)
+                    })
+                    .then((res)=>{
+                        return res.text()
+                    })
+                    .then((res)=>{
+                        console.log(res);
+                        localStorage.setItem("user_details" , res);
+                    })
+                    .catch((e)=>{
+                        console.log(e);
+                    })
+
 
 
                 open.addEventListener("click", ()=>{
@@ -118,10 +156,12 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
 
 
 
-
+//user_details
 //Add values to the html file
 let data = JSON.parse(localStorage.getItem("singleVenueDetails"));
-let { name : myName, imgUrl ,rating , filter_by} = data;
+let user = JSON.parse(localStorage.getItem("user_details"));
+
+let { name : myName, imgUrl ,rating , filter_by , _id } = data;
 let category = filter_by[0];
 let vote = localStorage.getItem("votes")
 //console.log(data, category, vote)
@@ -148,7 +188,15 @@ document.querySelector("#onlogoname").textContent = category;
 
 
 var cartobj={};
+
 // these function for change bg color and font color logo and sport name
+
+
+
+
+
+
+
 function sportlogo()
 {
     let sportdiv= document.getElementById("sportlogodiv");
@@ -171,6 +219,7 @@ function day1()
 
     let m1= document.getElementById("m1");
     m1.style.color="white";
+    // console.log(day1.innerHTML)
 
 }
 
@@ -258,133 +307,189 @@ function day8()
     let m8= document.getElementById("m8");
     m8.style.color="white";
 }
+
+
+
 // these functions for change bg color and font color of select start time block time divs
+var timeCount = 0;
+
 function time1()
 {
-    let time1=document.getElementById("time1");
-    time1.style.backgroundColor="#4daa0b";
-    time1.style.color="white";
+    if(timeCount == 0){
+        let time1=document.getElementById("time1");
+        time1.style.backgroundColor="#4daa0b";
+        time1.style.color="white";
+        console.log(time1.innerHTML)
+        cartobj.time = time1.innerHTML
+        timeCount++;
+
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
+
+    
 
 }
+
+
 
 function time2()
-{
-    let time2=document.getElementById("time2");
-    time2.style.backgroundColor="#4daa0b";
-    time2.style.color="white";
+{   
+    if(timeCount == 0){
+        let time2=document.getElementById("time2");
+        time2.style.backgroundColor="#4daa0b";
+        time2.style.color="white";
+        console.log(time2.innerHTML)
+        cartobj.time = time2.innerHTML
+        timeCount++;
+
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
+
 }
+
+
 
 function time3()
 {
-    let time3=document.getElementById("time3");
-    time3.style.backgroundColor="#4daa0b";
-    time3.style.color="white";
+
+    if(timeCount == 0){
+        let time3=document.getElementById("time3");
+        time3.style.backgroundColor="#4daa0b";
+        time3.style.color="white";
+        cartobj.time = time3.innerHTML
+        timeCount++;
+
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
+    
+    
 }
 
 function time4()
-{
+{   
+    if(timeCount == 0){
     let time4=document.getElementById("time4");
     time4.style.backgroundColor="#4daa0b";
     time4.style.color="white";
+    cartobj.time = time4.innerHTML;
+    timeCount++
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
 }
 
 // these functions for  change bg color of small small time intervals
 function t1()
-{
+{   
+    if(timeCount == 0){
     let t1=document.getElementById("t1");
     t1.style.backgroundColor="#4daa0b";
     t1.style.color="white";
+    cartobj.time = t1.innerHTML;
+    timeCount++;
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
 }
 
 function t2()
-{
+{   
+    if(timeCount == 0){
     let t2=document.getElementById("t2");
     t2.style.backgroundColor="#4daa0b";
     t2.style.color="white";
+    cartobj.time = t2.innerHTML;
+    timeCount++;
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
 }
 
 function t3()
-{
+{   
+    if(timeCount == 0){
     let t3=document.getElementById("t3");
     t3.style.backgroundColor="#4daa0b";
     t3.style.color="white";
+    cartobj.time = t3.innerHTML;
+    timeCount++;
+    }
+    else{
+        alert("Yoy can not select multiple time in one cart");
+    }
+
 }
 
 function t4()
-{
+{   if(timeCount == 0){
     let t4=document.getElementById("t4");
     t4.style.backgroundColor="#4daa0b";
     t4.style.color="white";
+    cartobj.time = t4.innerHTML;
+    timeCount++;
+   }
+   else{
+     alert("Yoy can not select multiple time in one cart");
+   }
 }
 
 function t5()
 {
-    let t5=document.getElementById("t5");
-    t5.style.backgroundColor="#4daa0b";
-    t5.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t6()
 {
-    let t6=document.getElementById("t6");
-    t6.style.backgroundColor="#4daa0b";
-    t6.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t7()
 {
-    let t7=document.getElementById("t7");
-    t7.style.backgroundColor="#4daa0b";
-    t7.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t8()
 {
-    let t8=document.getElementById("t8");
-    t8.style.backgroundColor="#4daa0b";
-    t8.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t9()
 {
-    let t9=document.getElementById("t9");
-    t9.style.backgroundColor="#4daa0b";
-    t9.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t10()
 {
-    let t10=document.getElementById("t10");
-    t10.style.backgroundColor="#4daa0b";
-    t10.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t11()
 {
-    let t11=document.getElementById("t11");
-    t11.style.backgroundColor="#4daa0b";
-    t11.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t12()
 {
-    let t12=document.getElementById("t12");
-    t12.style.backgroundColor="#4daa0b";
-    t12.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t13()
 {
-    let t13=document.getElementById("t13");
-    t13.style.backgroundColor="#4daa0b";
-    t13.style.color="white";
+    alert("This time is not free for this location")
 }
 
 function t14()
 {
-    let t14=document.getElementById("t14");
-    t14.style.backgroundColor="#4daa0b";
-    t14.style.color="white";
+    alert("This time is not free for this location")
 }
 
 // below functions for the plus and minus features of duration
@@ -452,6 +557,9 @@ function court1()
     court1.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court1.innerHTML
 
 }
 
@@ -462,6 +570,9 @@ function court2()
     court2.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court2.innerHTML
 }
 
 function court3()
@@ -471,6 +582,9 @@ function court3()
     court3.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court3.innerHTML
 }
 
 function court4()
@@ -480,6 +594,9 @@ function court4()
     court4.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court4.innerHTML
 }
 
 function court5()
@@ -489,6 +606,9 @@ function court5()
     court5.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court5.innerHTML
 }
 
 function court6()
@@ -498,6 +618,9 @@ function court6()
     court6.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court6.innerHTML
 }
 
 function court7()
@@ -507,12 +630,42 @@ function court7()
     court7.style.color="white";
 
     cost.innerHTML="Total cost for these booking - INR"+" "+2200*count;
+    cartobj.cost = 2200*count;
+    cartobj.duration = count
+    cartobj.court = court7.innerHTML
 }
+
+
+
+
+addId()
+
+
+
+//console.log(cartobj)
+async function addId(){
+    if(user){
+    cartobj.club_id = await data._id;
+    cartobj.user_id = await user.user._id;
+    console.log(cartobj)
+    }
+    else{
+        modal_container.classList.add("show")
+    }
+}
+
+
+
+
+
 
 // these function for add elements to the cart
 var emptydiv= document.getElementById("emptycart");
-function addtocart()
+async function addtocart()
 {
+    
+
+
     let mycart= document.getElementById("mycart");
     mycart.innerHTML= "MY CART (1)";
    let eptycart= document.getElementById("emptycart");
@@ -583,18 +736,44 @@ function addtocart()
     checkoutcostdiv.append(pricegreendiv, checkoutbutton)
 
 
+    if(cartobj.club_id != undefined && cartobj.user_id != undefined && cartobj.time != undefined && cartobj.cost != undefined){
+        emptydiv.append(sportname, courtnamediv, timedatecartdiv, costdiv, horizontal,checkoutcostdiv);
+    }
+   else{
+       await alert("Please select the field before adding to cart");
+    }
 
 
-
-   emptydiv.append(sportname, courtnamediv, timedatecartdiv, costdiv, horizontal,checkoutcostdiv);
+  
 
 
    checkoutbutton.addEventListener("click", ()=>{
 
+   
 
     let price = count*2200;
     localStorage.setItem("finalPrice", price);
-    window.location.href = "pay.html";
+    let loginstat = localStorage.getItem("login");
+    console.log(loginstat)
+    if(loginstat === "true"){
+        if(cartobj.club_id != undefined && cartobj.user_id != undefined && cartobj.time != undefined && cartobj.cost != undefined){
+
+            localStorage.setItem("cart_details" , JSON.stringify(cartobj));
+            window.location.href = "pay.html";
+        }
+        else{
+            alert("Please select the field before adding to checkout");
+        }
+
+    }
+    else{
+        modal_container.classList.add("show")
+        //window.location.href = "pay.html";
+    }
+
+
+
+    
    
 
 
@@ -606,7 +785,14 @@ function addtocart()
 document.querySelector("#btn2").addEventListener("click", ()=>{
     let price1 = count*2200;
     localStorage.setItem("finalPrice", price1);
-    window.location.href = "pay.html";
+    if(cartobj.club_id != undefined && cartobj.user_id != undefined && cartobj.time != undefined && cartobj.cost != undefined){
+
+        localStorage.setItem("cart_details" , JSON.stringify(cartobj));
+        window.location.href = "pay.html";
+    }
+    else{
+        alert("Please select the field before adding to checkout");
+    }
 })
 
 // these for import the footer
@@ -614,3 +800,8 @@ document.querySelector("#btn2").addEventListener("click", ()=>{
     // let foot= document.getElementById("footer");
     // import footer from "./components/footer.js";
     // foot.innerHTML=footer();
+
+
+    
+    
+   

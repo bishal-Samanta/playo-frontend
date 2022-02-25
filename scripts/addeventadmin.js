@@ -64,7 +64,7 @@
      var eventoverview2 = document.getElementById("eventoverview2").value;
      var eventgoals2 = document.getElementById("eventgoals2").value;
 
-     let addeventobject = {
+     let updateEventObject = {
          _id : eventid,
          city : eventcity2,
          name : eventname2,
@@ -76,14 +76,37 @@
          overview : eventoverview2,
          goals : eventgoals2,
      }
+     //Update Code 
+     fetch(`https://playo-backend.herokuapp.com/events/${eventid}`,
+                 {
+                     headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'application/json'
+                     },
+                     method: "PATCH",
+                     body: JSON.stringify(updateEventObject)
+                 })
+                 .then((res)=>{
+                     return res.text()
+                 })
+                 .then((res)=>{
+                     console.log(res);
+                     // localStorage.setItem("user_details" , res);
+                 })
+                 .catch((e)=>{
+                     console.log(e);
+                 })
 
-     console.log(addeventobject)
+
+
+
+     //console.log(addeventobject)
      console.log(eventid,eventname2,eventaddress2,eventcity2,eventimage2,eventtime2,playid2,eventimage22,eventoverview2,eventgoals2)
  }
 
 //  importing footer from component file
- let foot= document.getElementById("footer");
+//  let foot= document.getElementById("footer");
 
- import footer from "../components/footer.js";
+//  import footer from "../components/footer.js";
 
- foot.innerHTML= footer();
+//  foot.innerHTML= footer();
