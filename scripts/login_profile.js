@@ -276,7 +276,7 @@ let foot= document.getElementById("footer");
 // }
 
 
-document.querySelector("#menu").style.visibility = "hidden";
+//document.querySelector("#menu").style.visibility = "hidden";
 document.querySelector("#mainm").addEventListener("click", first);
 
 function first(){

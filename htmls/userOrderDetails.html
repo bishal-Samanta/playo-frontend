@@ -17,6 +17,41 @@
             box-shadow: 0 1px 6px rgb(0 0 0 / 15%);
             color: red;
        }
+   
+        
+    td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2;}
+
+    tr:hover {background-color: #ddd;}
+
+    th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #588A41;
+    color: white;
+    }
+
+    table{
+        width: 100%;
+    }
+
+
+
+
+    #noBooking {
+        font-family: sans-serif;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        margin-top: 80px;
+        color: rgb(36, 32, 32);
+
+    }
 
     </style>
 </head>
@@ -78,7 +113,35 @@
         
             <div id="verticalbox2">
 
-                
+               <table>
+                   <thead>
+                       <tr>
+                           <th>
+                               Venue Name
+                           </th>
+                           <th>
+                               Location
+                           </th>
+                           <th>
+                               Timing
+                           </th>
+                           <th>
+                               Cost
+                           </th>
+                           <th>
+                               Payment Status
+                           </th>
+                       </tr>
+                   </thead>
+                   <tbody id="tbody">
+                     
+
+                   </tbody>
+               </table>
+
+               <div id="noBooking">
+
+               </div>
         
         
             </div>
@@ -108,6 +171,58 @@
     let foot= document.getElementById("footer");
     import footer from "../components/footer.js";
     foot.innerHTML=footer();
+
+
+    //Append data
+    let cart = localStorage.getItem("cart_details")
+    cart = JSON.parse(cart)
+    console.log(cart)
+    //cart = "neel";
+    if(cart == null){
+        
+        //console.log("No Booking")
+        let appendDiv = document.querySelector("#noBooking");
+        let ptag = document.createElement("p");
+        ptag.textContent = "No Bookings"
+        appendDiv.append(ptag);
+
+    }
+    else{
+        let tr = document.createElement("tr");
+        let nametd = document.createElement("td");
+        let locationtd = document.createElement("td");
+        let timetd = document.createElement("td");
+        let pricetd = document.createElement("td");
+        let paymenttd = document.createElement("td");
+
+        let club = localStorage.getItem("singleVenueDetails");
+        club = JSON.parse(club);
+
+        nametd.textContent = club.name
+        locationtd.textContent = club.location
+        timetd.textContent =  cart.time
+        pricetd.textContent = cart.cost
+        paymenttd.textContent = "Success"
+
+        tr.append(nametd , locationtd , timetd, pricetd , paymenttd)
+        document.querySelector("#tbody").append(tr)
+
+
+
+        console.log(club)
+
+    }
+
+
+    document.querySelector("#logoutBtn1").addEventListener("click" , ()=>{
+        localStorage.setItem("login", false);
+        window.localStorage.removeItem('user_details');
+        localStorage.setItem("givedetails", false);
+        window.location.href = "venues.html";
+    })
+
+
+
 
 
 
