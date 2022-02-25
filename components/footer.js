@@ -31,7 +31,7 @@ function footer()
     </div>
     <div id="div2">
         <a href="about.html"><p>About Us</p></a>
-        <a href="partner.html"><p>Partner With Us</p></a>
+        <a href="../admin/adminLogin.html"><p>Partner With Us</p></a>
         <a href="brandact.html"><p>Brand Activations</p></a>
         <a href="corporate.html"><p>Corporate Offerings</p></a>
         <a href="contact.html"><p>contact Us</p></a>

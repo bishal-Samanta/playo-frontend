@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+
+        body{
+            background-color: #e5e5f7;
+            opacity: 0.8;
+            background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+            background-size: 10px 10px;
+        }
+
+        #body{
+            background-color: rgb(0, 0, 0);
+            width: 23%;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            border-radius: 5px;
+            margin-top: 150px;
+            height: 370px;
+        }
+
+        #loginFrom{
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            margin: auto;
+            margin-top: 25px;
+
+        }
+
+        label{
+            margin-bottom: 7px;
+            font-family: sans-serif;
+            color: white;
+        }
+
+        input{
+            height: 30px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        #image{
+            width: 40%;
+            margin-left: 30%;
+            margin-top: 35px;
+        }
+
+        #submitButton{
+            margin-top: 20px;
+            height: 25px;
+        }
+
+
+
+        #submitButton {
+        background-color: initial;
+        background-image: linear-gradient(-180deg, #89cc71, #8acf70);
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+        height: 44px;
+        line-height: 44px;
+        outline: 0;
+        overflow: hidden;
+        padding: 0 20px;
+        pointer-events: auto;
+        position: relative;
+        text-align: center;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: top;
+        white-space: nowrap;
+        width: 100%;
+        z-index: 9;
+        border: 0;
+        color: black;
+        font-family: sans-serif;
+        size: 25px;
+        
+        }
+
+        #submitButton:hover {
+        background: #00bd68;
+        color: white;
+        }
+        
+
+
+
+       
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Body -->
+    <div id="body">
+        <div>
+            <img src="https://playo-website.imgix.net/company/logo1.png?auto=compress,format" alt="" id="image">
+        </div>
+
+        <div id="adminForm">
+            
+
+          
+                
+            <form id="loginFrom">
+                <label for="">Email Id</label>
+                <input type="email" name="email" id="email" placeholder="Put your email id">
+
+                <label for="">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password">
+
+                <input type="submit" name="" id="submitButton">
+
+            </form>
+
+        
+            
+
+        </div>
+
+    </div>
+
+    <!--    footer -->
+    <div id="footer"></div>
+
+
+</body>
+</html>
+
+<script>
+    document.querySelector("#loginFrom").addEventListener("submit", submitButton);
+
+    function submitButton(e){
+        e.preventDefault();
+
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+        console.log(email, password)
+
+        if(email == "admin@playo.co" && password == "admin"){
+            window.location.href = "admin.html"
+        }
+        else{
+            alert("Wrong Credentials");
+        }
+    }
+
+
+
+
+</script>
