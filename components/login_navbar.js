@@ -42,11 +42,11 @@ function navbarsidebar(){
            <img src="https://playo-website.gumlet.net/icons/edit-profile.svg" />
            <p style="color:red">Profile</p>
        </div></a>
-       <a href="login_mybooking.html" > <div id="profile" id="gg1" >
+       <a href="userOrderDetails.html" > <div id="profile" id="gg1" >
         <img src="https://playo-website.gumlet.net/icons/bullet-list.svg" />
         <p>My Booking</p>
     </div></a>
-    <a id="idr" href="login_feedback.html" > <div id="profile">
+    <a id="idr" href="login_profile.html" > <div id="profile">
         <img src="https://playo-website.gumlet.net/icons/back-arrow.svg" />
         <p>Feedback</p>
     </div></a>
