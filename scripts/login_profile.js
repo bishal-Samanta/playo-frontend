@@ -120,7 +120,7 @@ function checkDone(){
         let data = JSON.parse(localStorage.getItem("user_details"));
         console.log(data)
         
-        if(data.user){
+        if(data != null){
             let user = data.user;
             let {firstName , lastName , email } = user;
             if(firstName != undefined && lastName != undefined && email != undefined){
@@ -209,6 +209,7 @@ document.querySelector("#save").addEventListener("click", ()=>{
              document.querySelector(".firstname").placeholder = firstName;
              document.querySelector(".lastname").placeholder =  lastName;
              document.querySelector(".email").placeholder =  email;
+             alert("Al the details are updated successfullt");
         
        }
 
@@ -275,7 +276,7 @@ let foot= document.getElementById("footer");
 // }
 
 
-document.querySelector("#menu").style.visibility = "hidden";
+//document.querySelector("#menu").style.visibility = "hidden";
 document.querySelector("#mainm").addEventListener("click", first);
 
 function first(){
@@ -296,7 +297,7 @@ function first(){
 //     localStorage.setItem("login" , false);
 //     window.location.href = "venues.html";
 // }
-    document.querySelector("#logoutBtn").addEventListener("click", ()=>{
+    document.querySelector("#logoutBtn1").addEventListener("click", ()=>{
         localStorage.setItem("login", false);
         window.localStorage.removeItem('user_details');
         localStorage.setItem("givedetails", false);
