@@ -120,7 +120,7 @@ function checkDone(){
         let data = JSON.parse(localStorage.getItem("user_details"));
         console.log(data)
         
-        if(data.user){
+        if(data != null){
             let user = data.user;
             let {firstName , lastName , email } = user;
             if(firstName != undefined && lastName != undefined && email != undefined){
