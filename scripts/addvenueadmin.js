@@ -66,7 +66,28 @@
          filter_by : sportname2,
      }
 
+     //Update venues Code 
+     fetch(`http://playo-backend.herokuapp.com/venues/${venueid}`,
+                 {
+                     headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'application/json'
+                     },
+                     method: "PATCH",
+                     body: JSON.stringify(updatevenueobject)
+                 })
+                 .then((res)=>{
+                     return res.text()
+                 })
+                 .then((res)=>{
+                     console.log(res);
+                     // localStorage.setItem("user_details" , res);
+                 })
+                 .catch((e)=>{
+                     console.log(e);
+                 })
+
                  
-     console.log(updatevenueobject);
+     //console.log(updatevenueobject);
      console.log(venueid,venuename2,lat2,lng2,venuecity2,venueimage2,sportname2)
  }
