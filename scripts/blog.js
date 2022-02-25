@@ -87,7 +87,7 @@
 
     //Edit 
     function fetchNews(){
-    //let apiKey_blog = "6189e46b9c2ae56cb80794edbe24b7c1";
+    let apiKey_blog = "6189e46b9c2ae56cb80794edbe24b7c1";
     let bloglink = `https://gnews.io/api/v4/top-headlines?topic=sports&lang=en&country=in&token=${apiKey_blog}`;
     fetch(bloglink)
     .then((res)=>{
