@@ -1,9 +1,9 @@
 
 // these is function for fetch bookings count from our heroku serever
-let url = "https://playo-backend.herokuapp.com/orders";
+let url4 = "https://playo-backend.herokuapp.com/orders";
 async function getorders() {
   try {
-          let res = await fetch(url);
+          let res = await fetch(url4);
 
           let response = await res.json();
 
