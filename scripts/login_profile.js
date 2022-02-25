@@ -297,7 +297,7 @@ function first(){
 //     localStorage.setItem("login" , false);
 //     window.location.href = "venues.html";
 // }
-    document.querySelector("#logoutBtn").addEventListener("click", ()=>{
+    document.querySelector("#logoutBtn1").addEventListener("click", ()=>{
         localStorage.setItem("login", false);
         window.localStorage.removeItem('user_details');
         localStorage.setItem("givedetails", false);

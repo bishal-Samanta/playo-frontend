@@ -8,8 +8,8 @@ function navbarsidebar(){
     
     <div id="navdiv">
     <ul type="none">
-        <li class="offer"><a href="#">Offer</a></li>
-        <li class="offer"><a href="#">Partner with us</a></li>
+        <li class="offer" ><a href="venues.html">Search Venues</a></li>
+        <li class="offer" id="logoutBtn1">Log Out</li>
 
         <li>
         <div id="#mainmenu">
