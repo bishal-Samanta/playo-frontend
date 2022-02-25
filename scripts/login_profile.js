@@ -209,6 +209,7 @@ document.querySelector("#save").addEventListener("click", ()=>{
              document.querySelector(".firstname").placeholder = firstName;
              document.querySelector(".lastname").placeholder =  lastName;
              document.querySelector(".email").placeholder =  email;
+             alert("Al the details are updated successfullt");
         
        }
 
