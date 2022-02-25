@@ -16,17 +16,9 @@ function navbarsidebar(){
         <div id="mainm">
         <div id="top1"><img  src="https://playo-website.gumlet.net/playo_functional/Icons/user_blank.svg" height="37"/></div>
         <div><p id="mobnum">9021553726</p></div>
-        <div id="down"><img src="https://playo-website.gumlet.net/playo_functional/Icons/arrow_light.svg" height="10" /></div>
+       
        </div>
-        <div id="menu">
-        <ul type="none">
-        <li class="d1"><a href="login_mybooking.html">My Profile</a></li>
-        <div id="pline"></div>
-        <li class="d2" id="logoutBtn">Logout</li>
-        </ul>
-        </div>
         
-        </div>
         </li>
     
     </ul>
