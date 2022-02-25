@@ -13,6 +13,11 @@
         window.location.href = "../index.html";
     })
 
+    document.querySelector("#viewBookings").addEventListener("click", ()=>{
+        window.location.href = "userOrderDetails.html";
+    })
+
+
 
     let price = localStorage.getItem("finalPrice") * 100
     let user = localStorage.getItem("user_details")
