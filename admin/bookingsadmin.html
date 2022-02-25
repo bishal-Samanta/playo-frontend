@@ -227,4 +227,25 @@
 </html>
 <script>
 
+      // these is function for fetch events data from our heroku serever
+      let url = "https://playo-backend.herokuapp.com/orders";
+    async function getorders() {
+        try {
+                let res = await fetch(url);
+
+                let response = await res.json();
+
+                let orders = response;
+                console.log(orders)
+                //appendevents(orders);
+        } 
+        catch (err) {
+            console.log("err:", err);
+        }
+    }
+    getorders();
+
+
+
+
 </script>
