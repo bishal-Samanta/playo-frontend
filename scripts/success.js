@@ -33,7 +33,7 @@
     console.log(cart)
 
 
-    fetch("http://localhost:1232/orders",
+    fetch("https://playo-backend.herokuapp.com/orders",
                     {
                         headers: {
                         'Accept': 'application/json',
