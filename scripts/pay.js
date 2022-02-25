@@ -132,6 +132,10 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
 
 
     let price = localStorage.getItem("finalPrice") * 100
+    let user = localStorage.getItem("user_details")
+    user = JSON.parse(user)
+    console.log(user)
+
 
     let cart = localStorage.getItem("cart_details")
     cart = JSON.parse(cart)
@@ -157,6 +161,16 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
     //     rzp1.open();
     //     e.preventDefault();
     // }
+
+
+
+
+
+
+
+
+
+
 
    var obj = {
        price: price
@@ -187,15 +201,26 @@ document.querySelector("#sendOTP").addEventListener("click", ()=>{
             "description": "Test Transaction",
             "image": "https://playo-website.imgix.net/company/logo1.png?auto=compress,format",
             "order_id": res.id, 
-            "callback_url": "https://playo-backend.herokuapp.com/order/status",
+            // "callback_url": "https://playo-backend.herokuapp.com/order/status",
             "theme": {
                 "color": "#3399cc"
             },
-            
+            "handler": function (response){
+                // alert(response.razorpay_payment_id);
+                // alert(response.razorpay_order_id);
+                // alert(response.razorpay_signature)
+                let payment ={
+                    payment_id: response.razorpay_payment_id,
+                    order_id:response.razorpay_order_id,
+                }
+                localStorage.setItem("payment_details" , JSON.stringify(payment));
+                alert("Payment Successfull")
+                window.location.href = "success.html"
+            },
             "prefill": {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
-                "contact": "9999999999"
+                "name": `${user.user.firstName} ${user.user.lastName}`,
+                "email": user.user.email,
+                "contact": user.user.mobileNumber
             },
             
             "theme": {
