@@ -1,0 +1,130 @@
+*{
+    /* margin: 0%;
+    padding: 0%; */
+    box-sizing: border-box;
+    font-family: 'lato', sans-serif;
+}
+/* these style for navbar  */
+#navbar{
+    display: flex;
+    width:100%;
+    height: 70px;
+    border: 1px solid transparent;
+    padding: 1% 6%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#menutitle{
+    height: 100%;
+    width: 20%;
+    margin-left: 9.5%;
+    margin-top: 5px;
+    font-size: 30px;
+    color:#4daa0b;
+    border: 1px solid transparent;
+}
+
+/* these style for middle stuff main container */
+#mainbody{
+    display: flex;
+    width: 100%;
+    height: 600px;
+    border: 1px solid transparent ;
+}
+
+/* these style for left side slidebar */
+#sidebar{
+    padding-top: 2%;
+    padding-left: 5%;
+    width:20%;
+    height: 100%;
+    border: 1px solid transparent;
+    background-color: #212121;
+}
+
+.sidebar_menu{
+    width: 100%;
+    height:8%;
+    text-align: left;
+    margin-bottom: 5%;
+    padding-left: 5%;
+    /* margin-top: 10%; */
+    font-size: 18px; 
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background: transparent;
+    color: white;
+}
+
+.sidebar_menu:hover{
+    background-color:#4daa0b;
+    cursor: pointer;
+}
+/* these style for main content div right side to the slide bar */
+#content{
+    /* margin-left: 3%; */
+    padding: 3%;
+    width:75%;
+    height: 100%;
+    border: 1px solid transparent;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#content::-webkit-scrollbar{
+    background-color: white;
+}
+#content::-webkit-scrollbar-thumb{
+    background: #212121;
+}
+
+/* these is for footer */
+/* #footer{
+    width: 100%;
+    border: 1px solid transparent;
+} */
+
+/* style for boxes for dashboard section */
+#upperbox{
+    display: flex;
+    margin-right: 7%;
+    margin-bottom: 6%;
+    width: 100%;
+    height: 27%;
+    border: 1px solid transparent; 
+}
+#lowerbox{
+    display: flex;
+    margin-right: 7%;
+    margin-bottom: 6%;
+    width: 100%;
+    height: 27%;
+    border: 1px solid transparent; 
+}
+.dashbox{
+    margin-right: 7%;
+    padding: 20px;
+    width: 25%;
+    height: 100%;
+    border: 1px solid transparent;
+    color: white;
+    border-radius: 10px;
+}
+/* styles for inner four boxes  */
+#current{
+    background-image: linear-gradient(to right top,#300491, #3064f4);
+}
+#total{
+    background-image: linear-gradient(to right top, #fb5e1f, #f7ae31);        
+}
+#events{
+    background-image: linear-gradient(to right top,#14b38d, #7cc54d);
+}
+#venues{
+    background-image: linear-gradient(to right top,#f11a61, #fe6209);
+}
+
+.box_naming{
+    font-size: 20px;
+    margin-top: 10%;
+}
+/* style for dashboard section end */

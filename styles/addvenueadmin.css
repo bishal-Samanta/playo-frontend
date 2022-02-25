@@ -1,0 +1,164 @@
+*{
+    /* margin: 0%;
+    padding: 0%; */
+    box-sizing: border-box;
+    font-family: 'lato', sans-serif;
+}
+/* these style for navbar  */
+#navbar{
+    display: flex;
+    width:100%;
+    height: 70px;
+    border: 1px solid transparent;
+    padding: 1% 6%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#menutitle{
+    height: 100%;
+    width: 20%;
+    margin-left: 9.5%;
+    margin-top: 5px;
+    font-size: 30px;
+    color:#4daa0b;
+    border: 1px solid transparent;
+}
+
+/* these style for middle stuff main container */
+#mainbody{
+    display: flex;
+    width: 100%;
+    height: 600px;
+    border: 1px solid transparent ;
+}
+
+/* these style for left side slidebar */
+#sidebar{
+    padding-top: 2%;
+    padding-left: 5%;
+    width:20%;
+    height: 100%;
+    border: 1px solid transparent;
+    background-color: #212121;
+}
+
+.sidebar_menu{
+    width: 100%;
+    height:8%;
+    text-align: left;
+    margin-bottom: 5%;
+    padding-left: 5%;
+    /* margin-top: 10%; */
+    font-size: 18px; 
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background: transparent;
+    color: white;
+}
+
+.sidebar_menu:hover{
+    background-color:#4daa0b;
+    cursor: pointer;
+}
+/* these style for main content div right side to the slide bar */
+#content{
+    /* margin-left: 3%; */
+    padding: 3%;
+    width:75%;
+    height: 100%;
+    border: 1px solid transparent;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#content::-webkit-scrollbar{
+    background-color: white;
+}
+#content::-webkit-scrollbar-thumb{
+    background: #212121;
+}
+
+/* these is for footer */
+/* #footer{
+    width: 100%;
+    height: 100px;
+    border: 1px solid red;
+} */
+
+/* styes for addvenue and update venue stuff */
+
+/* these styles for containers of addvenue and update venue */
+#venuecontainer{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+}
+#addvenueleft{
+    width: 48%;
+    height: 100%;
+    border: 2px solid #4daa0b;
+    overflow: auto;
+}
+#addvenueright{
+    width: 48%;
+    height: 100%;
+    margin-left: 4%;
+    border: 2px solid #4daa0b;
+    overflow: auto;
+}
+#addvenuetitle{
+    width:100%;
+    height:10%;
+    background-color: #212121;
+    color: white;
+    text-align: center;
+    padding-top: 2%;
+    font-size: 20px;
+}
+#updatevenuetitle{
+    width:100%;
+    height:10%;
+    background-color: #212121;
+    color: white;
+    text-align: center;
+    padding-top: 2%;
+    font-size: 20px;
+}
+
+/* these style for input boxes in the add venue div */
+.inputbox1{
+    width: 70%;
+    height: 30px;
+    margin-left: 15%;
+    margin-top: 3%;
+
+}
+#addvenuebutton{
+    margin-left: 38%;
+    margin-top: 3%;
+    padding: 1% 5%;
+    background-color: #212121;
+    color: white;
+}
+#addvenuebutton:hover{
+    background-color: #4daa0b;
+}
+/* these style for input boxes in the update venue div */
+.inputbox2{
+    width: 70%;
+    height: 30px;
+    margin-left: 15%;
+    margin-top: 3%;
+
+}
+#updatevenuebutton{
+    margin-left: 38%;
+    margin-top: 3%;
+    padding: 1% 5%;
+    background-color: #212121;
+    color: white;
+}
+#updatevenuebutton:hover{
+    background-color: #4daa0b;
+}
+/* styles for add venue and update venue end */
