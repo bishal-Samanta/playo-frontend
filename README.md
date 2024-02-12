@@ -23,10 +23,6 @@ A one week project for cloning the **playo.co** website powred by node.js.
 - Abhishek Vasant Satpute as [@abhisheksatpute369](https://github.com/abhisheksatpute369)
 
 
-## Roles
-- Bishal (Team Leader)- I Developed the whole backend for the project and linked all apis with the frontend part and organize the frontend code .
-- Abhisekh -  Build the frontend part of admin page and fix design issue.
-
 ## Solution Approach
 
 ### Waterfall Model
